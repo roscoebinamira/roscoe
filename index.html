@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roscoe Binamira</title>
+  <meta name="description" content="Moderne Bewerbungsseite für eine ." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@500,700,800&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 4.5rem);
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --space-24: 6rem;
+      --radius-sm: 0.375rem;
+      --radius-md: 0.75rem;
+      --radius-lg: 1.25rem;
+      --radius-xl: 1.75rem;
+      --color-bg: #0b1020;
+      --color-surface: rgba(16, 24, 48, 0.78);
+      --color-surface-2: rgba(23, 33, 63, 0.92);
+      --color-surface-offset: rgba(32, 47, 89, 0.9);
+      --color-border: rgba(160, 180, 255, 0.18);
+      --color-text: #eef2ff;
+      --color-text-muted: #b6c0e3;
+      --color-text-faint: #7f8aad;
+      --color-primary: #74f2ce;
+      --color-primary-strong: #39c8b0;
+      --color-accent: #8fb4ff;
+      --shadow-lg: 0 20px 70px rgba(0,0,0,0.38);
+      --font-body: 'General Sans', 'Inter', sans-serif;
+      --font-display: 'Cabinet Grotesk', 'General Sans', sans-serif;
+      --transition: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #050816;
+      --color-surface: rgba(11, 16, 32, 0.82);
+      --color-surface-2: rgba(19, 27, 52, 0.94);
+      --color-surface-offset: rgba(28, 40, 74, 0.96);
+      --color-border: rgba(146, 168, 255, 0.2);
+      --color-text: #f5f7ff;
+      --color-text-muted: #bcc4e1;
+      --color-text-faint: #7e87a7;
+      --color-primary: #74f2ce;
+      --color-primary-strong: #43d6b8;
+      --color-accent: #9cb8ff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100dvh;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--color-text);
+      background:
+        radial-gradient(circle at top left, rgba(116, 242, 206, 0.18), transparent 34%),
+        radial-gradient(circle at 85% 15%, rgba(143, 180, 255, 0.16), transparent 28%),
+        linear-gradient(160deg, #050816 0%, #0a1124 45%, #0e1733 100%);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; border: 0; background: none; color: inherit; cursor: pointer; }
+    img, svg { display: block; max-width: 100%; }
+
+    .skip-link {
+      position: absolute;
+      left: var(--space-4);
+      top: -3rem;
+      background: var(--color-primary);
+      color: #04111a;
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-full, 999px);
+      z-index: 20;
+    }
+    .skip-link:focus { top: var(--space-4); }
+
+    .page-shell {
+      width: min(1200px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: var(--space-4) 0 var(--space-16);
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      padding: var(--space-4) 0 var(--space-8);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      width: 2.75rem;
+      height: 2.75rem;
+      padding: 0.55rem;
+      border-radius: 0.95rem;
+      background: linear-gradient(135deg, rgba(116, 242, 206, 0.18), rgba(143, 180, 255, 0.18));
+      border: 1px solid var(--color-border);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    .theme-toggle {
+      min-width: 44px;
+      min-height: 44px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--color-border);
+      backdrop-filter: blur(16px);
+      transition: transform var(--transition), background var(--transition), border-color var(--transition);
+    }
+
+    .theme-toggle:hover,
+    .theme-toggle:focus-visible {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(116, 242, 206, 0.35);
+      outline: none;
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: var(--space-8);
+      align-items: stretch;
+    }
+
+    .hero-panel,
+    .info-panel {
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(18px);
+      overflow: hidden;
+    }
+
+    .hero-panel {
+      padding: clamp(1.5rem, 3vw, 3rem);
+      min-height: 78dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      isolation: isolate;
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(116, 242, 206, 0.08), transparent 38%),
+        radial-gradient(circle at 80% 18%, rgba(143, 180, 255, 0.18), transparent 20%),
+        radial-gradient(circle at bottom left, rgba(116, 242, 206, 0.12), transparent 24%);
+      z-index: -1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: var(--space-2);
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(116, 242, 206, 0.24);
+      background: rgba(116, 242, 206, 0.08);
+      color: var(--color-primary);
+      font-size: var(--text-xs);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin-top: var(--space-6);
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      max-width: 10ch;
+    }
+
+    .lead {
+      margin-top: var(--space-6);
+      color: var(--color-text-muted);
+      max-width: 55ch;
+      font-size: var(--text-lg);
+    }
+
+    .hero-grid {
+      margin-top: var(--space-10);
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-4);
+    }
+
+    .mini-card {
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .mini-card span {
+      display: block;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-text-faint);
+      margin-bottom: var(--space-2);
+    }
+
+    .mini-card strong {
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    .hero-footer {
+      margin-top: var(--space-12);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-4);
+    }
+
+    .cta {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.85rem 1.2rem;
+      border-radius: 999px;
+      background: var(--color-primary);
+      color: #06141b;
+      font-weight: 700;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+      box-shadow: 0 10px 30px rgba(116, 242, 206, 0.2);
+    }
+
+    .cta:hover,
+    .cta:focus-visible {
+      transform: translateY(-2px);
+      background: var(--color-primary-strong);
+      outline: none;
+    }
+
+    .ghost {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.85rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .info-panel {
+      padding: clamp(1.25rem, 2vw, 2rem);
+      display: grid;
+      gap: var(--space-4);
+      align-content: start;
+    }
+
+    .stack-card {
+      position: relative;
+      padding: var(--space-5);
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      overflow: hidden;
+    }
+
+    .stack-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -10% -55% auto;
+      width: 10rem;
+      height: 10rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(116, 242, 206, 0.22), transparent 70%);
+      filter: blur(10px);
+    }
+
+    .stack-card h2 {
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-2);
+    }
+
+    .stack-card p,
+    .stack-card li {
+      color: var(--color-text-muted);
+    }
+
+    .stack-card ul {
+      list-style: none;
+      display: grid;
+      gap: var(--space-3);
+      margin-top: var(--space-4);
+    }
+
+    .line {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+      margin: var(--space-2) 0;
+    }
+
+    .placeholder-text {
+      white-space: pre-line;
+      font-size: var(--text-base);
+      color: var(--color-text-muted);
+    }
+
+    .glow-orbit {
+      position: absolute;
+      right: -3rem;
+      bottom: 12%;
+      width: 11rem;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 1px solid rgba(143, 180, 255, 0.22);
+      box-shadow: inset 0 0 40px rgba(143, 180, 255, 0.08);
+      opacity: 0.8;
+    }
+
+    .glow-orbit::before,
+    .glow-orbit::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      inset: 14%;
+      border: 1px dashed rgba(116, 242, 206, 0.25);
+    }
+
+    .glow-orbit::after {
+      inset: 32%;
+      border-style: solid;
+      border-color: rgba(255,255,255,0.24);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .grades-section {
+      margin-top: var(--space-10);
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    .grades-header {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-4);
+      align-items: end;
+      flex-wrap: wrap;
+    }
+
+    .grades-header h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      letter-spacing: -0.03em;
+    }
+
+    .grades-header p {
+      color: var(--color-text-muted);
+      max-width: 60ch;
+    }
+
+    .grade-group {
+      display: grid;
+      gap: var(--space-3);
+      padding: var(--space-5);
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .grade-group h3 {
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-1);
+    }
+
+    .grade-group > p {
+      color: var(--color-text-faint);
+      font-size: var(--text-sm);
+    }
+
+    .grade-list {
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    .grade-row {
+      display: grid;
+      gap: var(--space-2);
+      padding-top: var(--space-2);
+    }
+
+    .grade-top {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-4);
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+
+    .grade-name {
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    .grade-value {
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
+    .track {
+      position: relative;
+      height: 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .fill {
+      height: 100%;
+      width: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .grade-row.is-visible .fill {
+      transform: scaleX(var(--grade-fill));
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fill {
+        transition: none;
+        transform: scaleX(var(--grade-fill));
+      }
+    }
+
+    .delay-1 { animation-delay: 0.08s; }
+    .delay-2 { animation-delay: 0.16s; }
+    .delay-3 { animation-delay: 0.24s; }
+    .delay-4 { animation-delay: 0.32s; }
+
+    @keyframes rise {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-panel {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-shell {
+        width: min(100% - 1rem, 1200px);
+        padding-bottom: var(--space-10);
+      }
+
+      .topbar {
+        padding-bottom: var(--space-6);
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        max-width: 12ch;
+      }
+
+      .hero-footer {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .cta,
+      .ghost {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.grade-row').forEach(row => observer.observe(row));
+  </script>
+  
+  <a class="skip-link" href="#content">Zum Inhalt springen</a>
+
+  <div class="page-shell">
+    <header class="topbar reveal">
+      <div class="brand" aria-label="Bewerbungsseite Logo">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 12.5L24 5l14 7.5v16L24 36 10 28.5v-16Z" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M18 18h12M18 24h12M18 30h7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span>Roscoe Binamira</span>
+      </div>
+
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Farbschema wechseln">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </header>
+
+    <main id="content" class="hero">
+      <section class="hero-panel">
+        <div>
+          <div class="eyebrow">Roscoe Binamira</div>
+          <h1>Warum ich einen Betriebswechsel möchte</h1>
+          <div class="stack-card" style="margin-top:1.5rem;">
+            <h2>Betreuung</h2>
+            <p class="placeholder-text">Ich habe meine Lehre in einem Betrieb gestartet, in dem ich leider nicht durchgehend gut betreut wurde. Insgesamt hatte ich nur etwa zwei Monate lang wirklich Unterstützung.<br>Dazu kommt, dass meine letzten zwei Berufsbildnerinnen gekündigt wurden, was die Situation für mich zusätzlich erschwert hat.<br>Es gab auch mehrere Standortwechsel, teilweise mit langem Arbeitsweg. Durch die unregelmässigen Einsätze und Zeiten war es für mich schwierig, einen stabilen Alltag zu haben, vor allem auch wegen meinem Training. Dadurch musste ich auch nach einem neuen Verein suchen, was mit dieser Unstabilität kaum möglich war.<br>Momentan bin ich am Standort Zürich HB, merke aber, dass ich besser in ein Umfeld passe, in dem ich konstanter arbeiten und mich weiterentwickeln kann. Zudem verstehe ich mich nicht gut mit dem gesamten Team.<br>Viele Lernende sind ebenfalls unzufrieden, und ich habe mich deshalb entschieden, mich woanders zu bewerben, da mir meine Zukunft wichtig ist. Ich möchte Freude am Lernen haben und in einem Umfeld arbeiten, in dem ich mich traue, Fragen zu stellen und richtig unterstützt werde.</p>
+          </div>
+        </div>
+      </section>
+      <section class="info-panel">
+        <section class="stack-card">
+          <h2>Meine Noten</h2>
+          
+          <div class="grade-list">
+            <div class="grade-group">
+              <h3>Allgemeinbildung</h3>
+              <div class="grade-row"><div class="grade-top"><span class="grade-name">Allgemeinbildender Unterricht</span><span class="grade-value">5</span></div><div class="track"><div class="fill" style="--grade-fill:0.8333; transform: scaleX(0.8333);"></div></div></div>
+              <div class="grade-row"><div class="grade-top"><span class="grade-name">Sprache und Kommunikation</span><span class="grade-value">5</span></div><div class="track"><div class="fill" style="--grade-fill:0.8333; transform: scaleX(0.8333);"></div></div></div>
+              <div class="grade-row"><div class="grade-top"><span class="grade-name">Gesellschaft</span><span class="grade-value">5</span></div><div class="track"><div class="fill" style="--grade-fill:0.8333; transform: scaleX(0.8333);"></div></div></div>
+            </div>
+            <div class="grade-group">
+              <h3>Erweiterte Grundkompetenz</h3>
+              <div class="grade-row"><div class="grade-top"><span class="grade-name">Erweiterte Grundkompetenz</span><span class="grade-value">5</span></div><div class="track"><div class="fill" style="--grade-fill:0.8333; transform: scaleX(0.8333);"></div></div></div>
+              <div class="grade-row"><div class="grade-top"><span class="grade-name">Englisch</span><span class="grade-value">5</span></div><div class="track"><div class="fill" style="--grade-fill:0.8333; transform: scaleX(0.8333);"></div></div></div>
+              <div class="grade-row"><div class="grade-top"><span class="grade-name">Semesterdurchschnitt EGK</span><span class="grade-value">5</span></div><div class="track"><div class="fill" style="--grade-fill:0.8333; transform: scaleX(0.8333);"></div></div></div>
+            </div>
+            <div class="grade-group">
+              <h3>Informatikompetenzen</h3>
+              <div class="grade-row"><div class="grade-top"><span class="grade-name">Informatik- und Netzinfrastruktur für ein kleines Unternehmen realisieren</span><span class="grade-value">5.5</span></div><div class="track"><div class="fill" style="--grade-fill:0.9167; transform: scaleX(0.9167);"></div></div></div>
+              <div class="grade-row"><div class="grade-top"><span class="grade-name">Serverdienste im Betrieb nehmen</span><span class="grade-value">5</span></div><div class="track"><div class="fill" style="--grade-fill:0.8333; transform: scaleX(0.8333);"></div></div></div>
+              <div class="grade-row"><div class="grade-top"><span class="grade-name">Benutzer/innen im Umgang mit Informatikmitteln instruieren</span><span class="grade-value">4</span></div><div class="track"><div class="fill" style="--grade-fill:0.6667; transform: scaleX(0.6667);"></div></div></div>
+              <div class="grade-row"><div class="grade-top"><span class="grade-name">Durchschnitt Module</span><span class="grade-value">4.8</span></div><div class="track"><div class="fill" style="--grade-fill:0.8; transform: scaleX(0.8);"></div></div></div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    
+  </div>
+  
+  
+<script>
+const root = document.documentElement;
+const btn = document.querySelector('[data-theme-toggle]');
+
+const savedTheme = localStorage.getItem('theme') || 'dark';
+root.setAttribute('data-theme', savedTheme);
+
+btn?.addEventListener('click', () => {
+  const current = root.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const fill = entry.target;
+      const value = fill.style.getPropertyValue('--grade-fill');
+      fill.style.transform = `scaleX(${value})`;
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.fill').forEach(fill => {
+  fill.style.transform = 'scaleX(0)';
+  observer.observe(fill);
+});
+</script>
+
+</body>
+</html>
